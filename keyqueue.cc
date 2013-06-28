@@ -7,6 +7,12 @@
 
 #include "keyqueue.h"
 
+
+#include <cstring>
+
+using namespace std;
+
+
 keyqueue::keyqueue(int len) {
     keybuffer = new int[keybuffer_len = len];
     key_front = key_rear = 0;

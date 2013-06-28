@@ -15,7 +15,12 @@
 #include "dirbuffer.h"
 #include "filebuffer.h"
 
+#include <cstring>
+
+using namespace std;
+
 void usage(void);
+
 
 int main(int argc, char *argv[])
 {
