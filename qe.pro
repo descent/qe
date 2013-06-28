@@ -1,0 +1,213 @@
+*
+*  Keydefine for qe
+*
+*
+*    ----------------------------------------------
+*    | blankcompress | on   | off   |	   |	  |
+*    | searchcase    | any  | exact |	   |	  |
+*    | ctrl-k	     | off  | on    |	   |	  |
+*    | ctrl-x	     | off  | on    |	   |	  |
+*    | ctrl-q	     | on   | off   |	   |	  |
+*    | big5	     | off  | on    | auto |	  |
+*    | history-key   | none | up    | down | both |
+*    | dir-sort-by   | name | time  | size |	  |
+*    ----------------------------------------------
+
+set blankcompress   on
+set searchcase	    any
+set ctrl-k	    off
+set ctrl-x	    off
+set ctrl-q	    on
+set big5	    auto
+set history-key     up
+set dir-sort-by     name
+
+*
+*   Basic key define
+*
+
+def up		= [up]
+def down	= [down]
+def left	= [left]
+def right	= [right]
+def pgup	= [page up]
+def pgdn	= [page down]
+def home	= [begin line]
+def end 	= [end line]
+def ins 	= [insert toggle]
+def del 	= [delete char]
+*def enter	 = [il][ps][ml][bw][fn][bm][po]
+def enter	= [sp][ps][ml][bw][fn][bm][po][down]
+def backspace	= [rubout]
+def esc 	= [command toggle]
+def tab 	= [tab]
+def c-backspace = [delete line]
+
+*
+*   function key
+*
+
+* def f1  = [cc][bl][ee]'r /usr/local/etc/qe.hlp'[bp][ex][d f1=[cg]]
+def f1	= [menu]
+def f2	= [cc][bl][ee]'save'[bp]
+def f3	= [cc][bl][ee]'file'[bp]
+def f4	= [cc][bl][ee]'quit'[bp]
+def f5	= [begin line][erase end line]
+def f6	= [erase end line]
+def f7	= [cc][bl][ee]'shell'[bp]
+def f8	= [edit]
+def f9	= [insert line]
+def f10 = [il][ps][ml][bw][bl][wb][bm][po]
+def f11 = [shift left]
+def f12 = [shift right]
+
+*
+* Control key
+*
+
+def c-a = [begin line]
+def c-b = [left]
+def c-c =
+def c-d = [tab word]
+def c-e = [end line]
+def c-f = [right]
+def c-g =
+* def c-h =
+
+* def c-i = don't define it ... same as <TAB>
+* def c-j = don't define it ... same as <ENTER>
+
+def c-k = [kill line]
+def c-l = [center line]
+
+* def c-m = don't define it ... same as <ENTER>
+
+def c-n = [down]
+def c-o =
+def c-p = [up]
+def c-q =
+def c-r = [push mark][mark line][copy mark][pop mark]
+def c-s = [backtab word]
+def c-t = [copy to command]
+def c-u = [undo]
+def c-v = [page down]
+def c-w =
+def c-x =
+def c-y = [delete line]
+def c-z =
+
+*
+*   Meta key (Alt key) :  m-a -->  Alt-A  or  ESC A
+*
+
+def m-a =
+*def m-b = [mark block]
+def m-b = [mark block][right]
+def m-c = [copy mark]
+def m-d = [delete mark]
+def m-e = [end mark]
+def m-f = [fill mark]
+def m-g =
+def m-h =
+def m-i =
+*def m-j = [el]
+def m-j = [el][im]' '[join]
+def m-k =
+*def m-l = [mark line]
+def m-l = [mark line][down]
+def m-m = [move mark]
+def m-n =
+def m-o = [overlay block]
+def m-p =
+def m-q =
+def m-r =
+def m-s = [split]
+def m-t =
+def m-u = [unmark]
+*def m-v = [page up]
+def m-v = [mb][down]
+def m-w =
+*def m-x =
+def m-x = [ps][ml][copy mark][po]
+def m-y = [begin mark]
+def m-z = [copy mark]
+
+def m-minus  = [backtab word]
+def m-equals = [tab word]
+def m-comma  = [top]
+def m-period = [bottom]
+def m-9      = [te]
+def m-0      = [be]
+
+*
+*   User key
+*
+
+def u-a = [d c-b=[left]][d c-f=[right]][d c-p=[up]][d c-n=[down]]+
+	  [d c-a=[bl]][d c-e=[el]][d c-d=[dc]]
+def u-b = [d c-v=[pu]][d m-v=[pd]][d c-y=[dl]]
+
+
+*
+*   Ctrl-K Key
+*
+
+def k-u = [top]
+def k-v = [bottom]
+def k-l = [cc][bl][ee]'line '[beep]
+def k-b = [ca][um][ml]
+def k-k = [ca][ml]
+def k-c = [ca][cm]
+def k-y = [dm]
+def k-x = [cc][bl][ee]'file'[beep]
+def k-z = [cc][bl][ee]'shell'[beep]
+def k-d = [cc][bl][ee]'save'[beep]
+def k-q = [quit]
+
+*
+*   Ctrl-X Key
+*
+
+def x-f = [dir]
+* d x-f = [search]
+def x-s = [cc][bl][ee]'save'[bp]
+def x-c = [quit]
+
+*
+*   Ctrl-Q Key
+*
+def q-f = [search]
+def q-1 = [d f1 =[cc][bl][ee]'r /usr/local/etc/qe.hlp'[bp][ex]]+
+	  [d f2 =[cc][bl][ee]'save'[bp]]+
+	  [d f3 =[cc][bl][ee]'file'[bp]]+
+	  [d f4 =[cc][bl][ee]'quit'[bp]]+
+	  [d f5 =[bl][ee]]+
+	  [d f6 =[ee]]+
+	  [d f7 =[cc][bl][ee]'shell'[bp]]+
+	  [d f8 =[edit]]+
+	  [d f9 =[il]]+
+	  [d f10=[il][ps][ml][bw][bl][wb][bm][po]]+
+	  [d f11=[sl]]+
+	  [d f12=[sr]]+
+	  [d up=[up]][d down=[down]][d left=[left]][d right=[right]]+
+	  [msg: PE2 function key define]
+
+def q-2 = [d f1 =[cg]][d f2 =[ca][ml]][d f3 =[ca][mb]][d f4 =[um]]+
+	  [d f5 =[ps]][d f6 =[po]][d f7 =[sl]][d f8 =[sr]]+
+	  [d f9 =[el]][d f10=[e]]+
+	  [d f11=[cc][bl][ee]'save'[bp]][d f12=[cc][bl][ee]'quit'[bp]]+
+	  [s searchcase any]+
+	  [msg: New style function key define]
+
+def q-3 = [set ctrl-x on][set ctrl-k off][d x-f=[dir]][key u-a]+
+	  [d c-z=[cc][bl][ee]'shell']+
+	  [d m-f=[tw]][d m-b=[bw]]+
+	  [d c-v=[pd]][d m-v=[pu]][d m-comma=[to]][d m-period=[bo]][d c-l=[cl]]+
+	  [d c-k=[kl]][d c-s=[search]][d c-r=[search]]+
+	  [msg: Emace style key define]
+
+def q-4 = [set ctrl-k on][d x-f=[search]][key u-a][d c-z=[bw]][d c-x=[tw]]+
+	  [msg: Joe style key define]
+
+def q-5 = [d up=[scrolldown]][d down=[scrollup]]+
+	  [d left=[scrollright]][d right=[scrollleft]]

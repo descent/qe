@@ -1,0 +1,139 @@
+  -------------------------------------------------------------------------
+  |	      Help  Menu			   Help  Menu	       1  |
+  -------------------------------------------------------------------------
+  |									  |
+  |  CAUTION !!!  QE comes with  ABSOLUTELY NO WARRANTY !!		  |
+  |		  Use it at your own risk !!!!				  |
+  |									  |
+  |  You can define your own keyboard function mapping on "~/.qerc" file, |
+  |  see the system sample file /usr/local/etc/qe.pro if necessary.	  |
+  |									  |
+  |  If "Alt" key does not work, please use ESC instead.		  |
+  |  i.e. Instead of type "Alt-L", you can type ESC first, then press "L" |
+  |									  |
+  |  Set shell variable "TERM" to "xterm-color", "color_xterm" or "rxvt"  |
+  |  if your "xterm" program can support colors display.		  |
+  |									  |
+  |-----------------------------------------------------------------------|
+  |    Press <PageDown> or <Ctrl V> for next page ............		  |
+  -------------------------------------------------------------------------
+  -------------------------------------------------------------------------
+  |	      Help  Menu			   Help  Menu	       2  |
+  -------------------------------------------------------------------------
+  |									  |
+  |	    Function Keys		    Exiting qe			  |
+  |									  |
+  |  F1  --  Menu			  F3  FILE saves file on disk and |
+  |  F2  --  Saves current file 	      removes from memory	  |
+  |  F3  --  Saves and quits file					  |
+  |  F4  --  Quits current file 	  F4  QUIT removes file from	  |
+  |  F5  --  Erases contents of line	      memory without saving	  |
+  |  F6  --  Erases to end of line					  |
+  |* F7  --  Shell escape		   If you made changes to a file  |
+  |  F8  --  Switches active files	   and have not saved them, when  |
+  |  F9  --  Inserts line		   you press F4 (Quit), you see:  |
+  |  F10 --  Inserts line and indents	   "Do you really want to quit?   |
+  |* F11 --  Shift Right		   Type y or n".  If you type y,  |
+  |* F12 --  Shift Left 		   all unsaved changes are lost.  |
+  |									  |
+  -------------------------------------------------------------------------
+  -------------------------------------------------------------------------
+  |	      Help  Menu			   Help  Menu	       3  |
+  -------------------------------------------------------------------------
+  |									  |
+  |	  Cursor Movement Keys			Moving the Cursor	  |
+  |									  |
+  |    Home	Cursor Up      PgUp					  |
+  |					 Home	   -- First column	  |
+  |    Cursor Left     Cursor Right	 End	   -- After last character|
+  |					 PgUp	   -- Previous page	  |
+  |    End     Cursor Down     PgDn	 PgDn	   -- Next page 	  |
+  |									  |
+  |									  |
+  | Cursor Up	 --  Up one line					  |
+  | Cursor Down  --  Down one line					  |
+  |									  |
+  | Cursor Left  --  Left one space					  |
+  | Cursor Right --  Right one space					  |
+  |									  |
+  -------------------------------------------------------------------------
+  -------------------------------------------------------------------------
+  |	      Help  Menu			   Help  Menu	       4  |
+  -------------------------------------------------------------------------
+  |									  |
+  |	  Cursor Movement Keys			Moving the Cursor	  |
+  |									  |
+  |	       Ctrl-P							  |
+  |				       * c-A	   -- First column	  |
+  |    Ctrl-B	       Ctrl-F	       * c-E	   -- After last character|
+  |    <----	       ---->	       * m-V	   -- Previous page	  |
+  |	       Ctrl-N		       * c-V	   -- Next page 	  |
+  |									  |
+  |				     * m-comma (,) -- Top of file	  |
+  |  * c-P    --  Up one line	     * m-period(.) -- Bottom of file	  |
+  |  * c-N    --  Down one line      * m-9	   -- Top of screen	  |
+  |				     * m-0	   -- Bottom of screen	  |
+  |  * c-B    --  Left one space     * m-minus (-) -- next word 	  |
+  |  * c-F    --  Right one space    * m-equals(=) -- previous word	  |
+  |									  |
+  -------------------------------------------------------------------------
+  -------------------------------------------------------------------------
+  |	      Help  Menu			   Help  Menu	       5  |
+  -------------------------------------------------------------------------
+  |									  |
+  |	     Marking Text			Using Marked Text	  |
+  |									  |
+  |   m = Meta key (Alt key or ESC key) 				  |
+  |					  m-Z  --  Copies marked text,	  |
+  |					* m-C	   leaving original text  |
+  |   m-B  --  Block mark for						  |
+  |	       rectangles, vertical,	  m-M  --  Moves marked text,	  |
+  |	       and horizontal lines		   deleting original text |
+  |									  |
+  |   m-L  --  Line mark for one	  m-O  --  Overlays marked text,  |
+  |	       line or paragraph		   leaving original text  |
+  |									  |
+  |					  m-D  --  Deletes marked text	  |
+  |   m-U  --  Unmarks all marks					  |
+  |					  m-F  --  Fill mark		  |
+  -------------------------------------------------------------------------
+  -------------------------------------------------------------------------
+  |	      Help  Menu			   Help  Menu	       6  |
+  -------------------------------------------------------------------------
+  |									  |
+  |	     Erasing Text			 Restoring Text 	  |
+  |		      c = Control key			  c = Control key |
+  |									  |
+  |									  |
+  |   F5   --  Erases entire line	 * c-U	-- Restores the current   |
+  |	       of text				   line to the way it was |
+  |						   when the cursor first  |
+  |   F6   --  Erases text at and to		   moved onto it, if the  |
+  |	       right of cursor			   cursor has not left it |
+  |									  |
+  | * c-Y  --  Erase entire line of text				  |
+  |									  |
+  | * c-K  --  Delete from cursor to end of line			  |
+  |									  |
+  |									  |
+  -------------------------------------------------------------------------
+  -------------------------------------------------------------------------
+  |	      Help  Menu			   Help  Menu	       7  |
+  -------------------------------------------------------------------------
+  |									  |
+  |	   Formatting Text						  |
+  |		       m = Meta key (Alt key or ESC key)		  |
+  |		       c = Ctrl key					  |
+  |									  |
+  |  m-S  --  Splits line at cursor					  |
+  |									  |
+  |									  |
+  |  m-J  --  Joins line at cursor					  |
+  |									  |
+  |									  |
+  |									  |
+  |									  |
+  |									  |
+  |									  |
+  |									  |
+  -------------------------------------------------------------------------
