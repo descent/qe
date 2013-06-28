@@ -10,7 +10,8 @@
 
 #include "config.h"
 
-char *basename(char *pathname);
+#include <libgen.h>
+
 char *qeStrdup(const char *str);
 void qeFree(char *ptr);
 

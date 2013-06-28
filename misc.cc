@@ -11,18 +11,6 @@
 #include "misc.h"
 
 
-char *basename(char *pathname) {
-    char  *str;
-
-    if ((str = strrchr(pathname, '/')) != NULL) {
-	str = str + 1;
-    } else {
-	str = pathname;
-    }
-
-    return str;
-}
-
 char *qeStrdup(const char *str) {
     char  *ptr;
 
