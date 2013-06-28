@@ -1,0 +1,309 @@
+	   qe -- UNIX 版本的 PE2
+	   ---------------------
+
+一、關於 qe
+
+    qe 是一個模仿 PE2 的編輯程式，叫 qe 的原因只是因為字母 Q 是排在 P 之後。
+    和 DOS 不同的是，UNIX 沒有那麼多鍵可用，而且不同的 Terminal 的鍵碼也略有
+    不同。因此一些常用的 function 最好定義到 Control Key 或 Meta Key 上，以
+    免不堪使用。
+
+    QE 的網站在 http://www.cc.ncu.edu.tw/~center5/product/qe/
+
+
+二、安裝
+
+    QE 是以 C++ 語言撰寫的，除了到
+    http://www.cc.ncu.edu.tw/~center5/product/qe/
+    下載最新版的 QE 程式外，您需要在您的機器上先安裝好下列軟體:
+
+    g++:       GNU C++ Compiler
+	       參考版本 	     gcc-2.8.1.tar.gz
+				     libstdc++-2.8.1.1.tar.gz
+    ncurses:   GNU Curses
+	       參考版本 	     ncurses-4.2.tar.gz
+
+    將 QE 解開，看看 Makefile 是否有要修改的地方。執行
+
+    make	  --> 進行編譯
+    make install  --> 進行安裝
+
+
+三、環境設定
+
+    QE 在安裝後是放在 /usr/local/bin 下，另外系統的 profile 及 help
+    file 分別是 qe.pro 及 qe.hlp 都安裝在 /usr/local/etc 下
+
+    QE 的功能鍵定義是寫在 qe.pro 檔，或使用者家目錄的 .qerc 檔。定義
+    的方式和 PE2 非常的接近，請自行參考 PE2 的使用手冊。
+
+    QE 能以彩色的方式顯示，但與使用的 Terminal 有關。如 Linux 或 FreeBSD
+    的 console，xcin 的 crxvt 或其它支援彩色的 Terminal。但使用 crxvt 或
+    其它具 color 能力的 X term 需要將 TERM 的環境變數設成 xterm-color、
+    color_xterm 或 rxvt (各系統略有不同)。設定的方法是
+
+    setenv TERM xterm-color	       -->  csh 或 tcsh
+
+    TERM=xterm-color		       -->  sh、ksh、bash
+    export TERM
+
+    另外，您也可以利用 QE 的 Command Line option，改變 TERM 的設定，如:
+
+    qe -t xterm-color
+
+    不過，這種方式在某些平台不 Work
+
+    可以用 Shell Scrip 來做，如
+
+    --------------------------------------
+    #!/bin/sh
+
+    t=$TERM
+    TERM=xterm-color
+    export TERM
+
+    qe "$@"
+
+    TERM=$t
+    export TERM
+    -------------------------------------
+
+
+四、執行 qe
+
+    qe 有下列參數可供使用
+
+      -h    看看 qe 有那些參數
+      -t    設定 Terminal Type，如 qe -t xterm-color
+      -p    指定 profile 取代 ~/.qerc
+
+五、BUG
+
+    當您發現 QE 程式有任何 BUG 時，請 Email 給 center5@cc.ncu.edu.tw
+    以便在下一個版本更正。
+
+六、profile 內容及臨時的環境設定
+
+    SET 系列
+
+      set blankcompress on/off	(存檔時要不要把 space 壓成 TAB)
+	可在命令行下 [?b] 查詢目前狀態或在命令行臨時修改設定
+
+
+      set searchcase exact/any	(搜尋或取代時是否忽略大小寫)
+	可在命令行下 [?s] 查詢
+	set searchcase exact   大小寫區分
+	set searchcase any     大小寫不區分
+
+      set big5 on/off/auto	(中文訊息顯示開關)
+	可在命令行下 [?5] 查詢
+	set big5 on		中文訊息
+	set big5 off		英文訊息
+	set big5 auto		自動中英模式 (以 LANG 環境變數決定，只要是
+				zh_TW 開頭時，就設為中文，否則英文)
+
+      set history-key none/up/down/both  (當游標在命令列時叫出歷史命令的鍵)
+	set history-key none	關閉
+	set history-key up	向上鍵
+	set history-key down	向下鍵
+	set history-key both	上、下鍵
+
+      set dir-sort-by name/time/size  (讀目錄時排序方式)
+	set dir-sort-by name	依檔名排序
+	set dir-sort-by time	依檔案修改日期排序
+	set dir-sort-by size	依檔案大小排序
+
+
+      set ctrl-k on/off
+      set ctrl-q on/off
+      set ctrl-x on/off
+
+	因於 UNIX 上可利用的鍵少很多，因此 QE 允許使用者以
+	Ctrl-K (參考 joe 或 WordStar) 或 Ctrl-Q (參考漢書) 或
+	Ctrl-X (參考 Emacs) 搭配其它鍵。搭配的鍵可以是英文字母或
+	數字，分別以 k- q- x- 表示。如 k-q 代表 Ctrl-K Q
+	而 def k-q = [quit] 則可以將 QE 定義如 JOE 一般的功能，
+	但要 set ctrl-k on，但會失去 ctrl-k 的原有功能。
+
+	在命令要查詢目前這些功能開關狀況可分別以 [?k]、[?q] 及 [?x]
+	查詢，也可在 Editing 狀態下直接修改。
+
+
+    DEF 系列
+
+	def 或 d 的指令是用來定義按鍵的巨集指令，如:
+	def enter=[il][up][fn][down]
+	臨時寫的巨集也可直在命令行下，可立即生效 (但離開後不會被存下來)
+
+
+七、命令列的指令
+
+    1. 讀檔:	     e filename 或 edit filename
+
+    2. 存檔:	     save  (目前不支援 save filename)
+
+    3. 存檔並離開:   file
+
+    4. 離開:	     quit 或 q 或 [quit]
+
+    5. 改檔名:	     n filename 或 name filename
+
+    6. 看目錄:	     dir 或 dir path
+		     dir 後可以光棒選做 cd 或讀檔的動作
+
+    7. Shell:	     下 shell 可臨時跳一個 shell 出來，下一些 shell 的命令
+		     最後 exit 返回 QE
+
+    8. 直接跳行號:   下 line 110 可直接跳到第 110 行
+
+    9. 臨時的巨集:   一般而言，巨集指令都是定義在功能鍵上，但也可在命令列直
+		     接下巨集指令
+
+   10. 臨時定義鍵:   在命令列臨時修改某功能鍵的定義，如將 enter 鍵的功能
+		     改為不插入一行，直接跳到下一行的開頭，可下
+		     def enter=[down]
+		     另外定義功能鍵也可直接以鍵碼來定義，比方說，原本您預期
+		     用 Ctrl-Z 來刪行，但按了 Ctrl-Z 出現
+		     key code: [ 26 ] is not defined，則您可以下
+		     d 26=[dl] 來達到目的，這種功能特別適合於一些 function
+		     key: f1 ~ f12, home, end, pgup, pgdn 不 work 時。
+
+   11. 臨時修改環境: 用 set 指令可修改環境，如寫 Makefile 一定要
+		     set blankcompress on
+
+   12. 搜尋:	     l/abc/ 、 /abc 、 /abc/  往下搜尋有 abc 字串的地方
+		     l/def/- 、 /def/-	      往上搜尋有 def 字串的地方
+		     lak/a   、 l\k/\	      往下搜尋有 k/ 字串的地方
+		      ^  ^	 ^  ^
+		     l/abc/m  、 /abc/m       往下搜尋在標記區有 abc 字串的地方
+		     l/abc/m- 、 /abc/m-      往上搜尋在標記區有 abc 字串的地方
+
+   13. 搜尋/取代:    c/abc/def/ 	      往下搜尋有 abc 字串改為 def
+		     c#ab/#d\b# 	      往下搜尋有 ab/ 字串改為 d\b
+		      ^   ^   ^
+		     c/abc/def/-	      往上搜尋有 abc 字串改為 def
+		     c/abc/dev/m	      往下搜尋標記區有 abc 字串改為 def
+		     c/abc/def/-m	      往上搜尋標記區有 abc 字串改為 def
+
+		     搜詢到後，會出現如下的訊息 (這個部份和 pe2 不同)
+		     confirm change [y/n/q/a]:
+		     Yes   按 y 表要 change，然後找下一個
+		     No    按 n 表不改，然後找下一個
+		     Quit  按 q 表不改，也不再找了
+		     All   按 a 表全改，不要再問了
+
+		     如果想在命令列下指令改全部而不要一個一個詢問，則在
+		     最後要加 * ，如:
+
+		     c/abc/def/*
+
+
+    注意: 目前搜尋都是大小是否區分，由 searchcase 決定	!!!!
+
+
+八、已支援的巨集指令
+
+    目前已支援的巨集指令有 (上半部份與 PE2 相容，下半部份則為 QE 自己的巨集)
+
+    指	 令		     縮寫	     功 能 簡 述
+    ---------------------------------------------------------------------
+    [backtab word]	     [bw]	    往回跳上個字
+    [beep]		     [bp]	    發出 beep 聲
+    [begin line]	     [bl]	    到行的開頭
+    [begin mark]	     [bm]	    跳到 mark 區的開頭
+    [begin word]	     [wb]	    跳到字的開頭
+    [bottom]		     [bo]	    跳到檔案的結束
+    [bottom edge]	     [be]	    跳到螢幕最下一行
+    [center line]	     [cl]	    將游標所在位置調整在中間
+    [command toggle]	     [cg]	    命令區和資料區的切換
+    [copy from command]      [cf]	    將命令列的資料拷貝到資料區
+    [copy mark] 	     [cm]	    將標記區的資料拷貝到游標所在位置
+    [copy to command]	     [ct]	    將游標所在資料區的內容拷貝到命令列
+    [cursor command]	     [cc]	    跳到命令列
+    [cursor data]	     [ca]	    跳到資料區
+    [delete char]	     [dc]	    刪除一個字元
+    [delete line]	     [dl]	    刪除一行
+    [delete mark]	     [dm]	    刪除標記區
+    [down]		     [down]	    游標往下一格
+    [edit]		     [e]	    編輯下個檔案
+    [end line]		     [el]	    游標移到一行的最後
+    [end mark]		     [em]	    游標移到標記區的最後
+    [end word]		     [we]	    游標移到字的結尾
+    [erase begin line]	     [eb]	    刪除游標以後的資料
+    [erase end line]	     [ee]	    刪除游標以前的資料
+    [execute]		     [ex]	    執行命令列的命令
+    [fill mark] 	     [fm]	    將標記區填入一個字
+    [first nonblank]	     [fn]	    跳到游標所在行第一個非空白的字元
+    [insert line]	     [il]	    插入一行
+    [insert mode]	     [im]	    輸入模式切換成插入模式
+    [insert toggle]	     [it]	    切換輸入模式
+    [join]		     [jo]	    將下一行接到本行後面
+    [left]		     [left]	    游標往左一格
+    [lowercase] 	     [lc]	    將標記區的所有字轉成小寫
+    [mark block]	     [mb]	    做 block 形式的標記區
+    [mark line] 	     [ml]	    做行形式的標記區
+    [move mark] 	     [mm]	    搬動標記區至游標位置
+    [overlay block]	     [ob]	    用複蓋的方式複製 block 形式的標記區
+    [page down] 	     [pd]	    跳下一頁
+    [page up]		     [pu]	    跳上一頁
+    [pop mark]		     [po]	    從堆疊取出標記區
+    [push mark] 	     [ps]	    將標記區放進堆疊
+    [replace mode]	     [rm]	    輸入模式切換成取代模式
+    [right]		     [right]	    游標往右一格
+    [rubout]		     [ro]	    刪除游標前一個字元
+    [scrolldown]	     [scrolldown]   螢幕上捲
+    [scrollup]		     [scrollup]     螢幕下捲
+    [scrollleft]	     [scrollleft]   螢幕左捲
+    [scrollright]	     [scrollright]  螢幕右捲
+    [shift left]	     [sl]	    將標記區資料往左推一格
+    [shift right]	     [sr]	    將標記區資料往右推一格
+    [split]		     [sp]	    將游標後的資料移到下一行
+    [tab]		     [tb]	    跳到下個定位點
+    [tab word]		     [tw]	    跳到下一個字
+    [top]		     [to]	    跳到檔案的開頭
+    [top edge]		     [te]	    跳到螢幕最上一行
+    [undo]		     [ud]	    還原錯誤的輸入
+    [unmark]		     [um]	    取消標記區
+    [up]		     [up]	    游標往上一格
+    [uppercase] 	     [uc]	    將標記區的所有字轉成大寫
+			     [?b]	    查詢 blankcompress 的狀態
+			     [?s]	    查詢 searchcase 的狀態
+    [quit]		     [quit]	    離開(不儲存)
+    [clear marks]	     [ck]	    清除標記堆疊
+    ---------------------------------------------------------------------
+    [kill line] 	     [kl]	  刪除游標後的資料，若游標已在最後
+					  則將下一行接上來
+    [search]		     [search]	  QE 形式的資料搜尋
+    [menu]		     [menu]	  下拉式功能表
+    [history]		     [history]	  叫出命令列歷史記錄
+    [quit all]		     [quit all]   關閉所有檔(不詢問、也不儲存)跳出 QE
+    [file all]		     [file all]   儲存所有被更動的檔案，並離開
+			     [?k]	  查詢 Ctrl-K 的狀態
+			     [?q]	  查詢 Ctrl-Q 的狀態
+			     [?x]	  查詢 Ctrl-X 的狀態
+			     [?5]	  查詢中文訊息開關
+
+
+九、尚未支援的 PE2 巨集
+
+    [backtab]
+    [center in margins]
+    [clear message]
+    [demo end]
+    [demo fast]
+    [demo slow]
+    [escape]
+    [left edge]
+    [left margin]
+    [mark char]
+    [next view]
+    [next window]
+    [paragraph margin]
+    [print]
+    [print mark]
+    [redraw]
+    [reflow]
+    [right edge]
+    [right margin]
+    [split screen]
+    [zoom window]

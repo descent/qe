@@ -1,0 +1,21 @@
+#!/bin/sh
+
+COLOR_XTERM=terminfo/c/color_xterm
+
+if [ "$TERM" = "vt100" ] || [ "$TERM" = "xterm" ]; then
+    t=$TERM
+
+    if [ -f /usr/share/${COLOR_XTERM} ] || [ -f /usr/local/share/${COLOR_XTERM} ] || [ -f /usr/lib/${COLOR_XTERM} ]; then
+	TERM=color_xterm
+    else
+	TERM=xterm-color
+    fi
+    export TERM
+
+    qe $@
+
+    TERM=$t
+    export TERM
+else
+    exec qe $@
+fi

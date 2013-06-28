@@ -1,0 +1,122 @@
+v0.0.7	- Nov 5, 1998	 # 修正重覆讀相同檔的問題
+
+v0.0.8	- Nov 5, 1998	 # 修正最後一行按 [down] 資料會看不見的 bug
+			 # 修正檔案 quit 後，mark 未清除的 bug
+			 # 增加陽春 dir 的功能
+
+v0.0.9	- Nov 6, 1998	 # 修正刪行後檔案修改記錄旗號未更新的 bug
+			 # 修正 dir 的 bug
+			 # 增加 dir 後按 enter 讀檔的功能
+			 # 修正 scrollright, scrollleft 的 bug
+			 # 增加 read only 的支援
+			 # 修正 file 指令直接跳出的 bug
+
+v0.0.10 - Nov 7, 1998	 # 修改 file quit 後，Current File 的方向
+			 # 修改 dir 記憶體釋放的部份
+			 # 修改 dir 檔名的排序
+			 # 增加 dir 後按 enter 的 cd 功能
+			 # 修正刪除最上一行會 core dump 的 bug
+
+v0.0.11 - Nov 9, 1998	 # 增加 dir 時顯示檔案大小、擁有者等資訊
+			 # 加強 dir 選檔光棒
+			 # 修改命令列若不加檔名時，直接顯示 dir 視窗
+			 # 增加 ctrl-q 功能鍵組的開關
+			 # 增加 terminal 大小讀取 (不再限定 80x24)
+			 # 增加 pe2 style 的 search 功能
+			 # 增加 pe2 style 的 change 功能 (不完全相容)
+			 # 修正 block mark 刪除時的 bug
+			 # Mark 區的顏色改黃色 (因我用 crxvt 游標為紅色)
+			 # 增加檔案載入時的進度顯示(載入大檔時才有感覺)
+
+v0.0.12 - Nov 9, 1998	 # 修正使用 change 功能後，檔案被修改的註記
+			 # 修正檔案 Quit 掉後的記憶體釋放
+			 # 修正部份系統 (如 IRIX) 離開 QE 後螢幕不正常的情形
+			 # 過長路徑顯示調整
+
+v0.0.13 - Nov 9, 1998	 # 修正 Shell Escape 再返回後螢幕顯示不正常的問題
+			 # 修正 cursor command 資料更改的認定
+			 # 增加 QE Style 的 Search 功能 (Ctrl-Q F)
+
+v0.0.14 - Nov 10, 1998	 # 增加在搜尋時，會依 Search case 的設定來搜尋
+			 # 增加 -t term_type 的 Command line option
+			 # 增加 -p profile 的 Command line option
+
+v0.0.15 - Nov 10, 1998	 # 修正 search 到超過螢幕寬度資料顯示的 bug
+
+v0.0.16 - Nov 10, 1998	 # 修正插入模式超長溢位的 BUG
+			 # 修正命令列插入模式不 work 的 BUG
+			 # 增加命令列以 r 或 read 指令讀入 read only file
+			 # 修正讀入空檔會錯亂的 BUG
+			 # 加上讀檔、讀目錄的權限檢查
+			 # 修正讀取未成行的檔案時少一個 byte 的 BUG
+			 # 修正在 FreeBSD 編譯的錯誤
+
+v0.0.17 - Nov 11, 1998	 # 增加命令列巨集化的支援，允許多層 [[...]] 結構
+			 # 多行巨集指令的支援 (以 + 結尾)
+			 # 修正刪除最後一行而錯刪倒數第二行的 BUG
+			 # 修正 ^k, ^q, ^x 後接的 Ctrl 鍵組
+			 # 增加 [msg: <your messages>] 方便 profile 使用
+			 # 允許定義鍵相互叫用，但沒有做遞回檢查
+
+v0.0.18 - Nov 12, 1998	 # 修正命令列巨集與功能鍵巨集不同的 BUG
+			 # 修正複合巨集的 hidden BUG
+
+v0.0.19 - Nov 12, 1998	 # 修正 begin mark 及 end mark 未回載緩衝區的 BUG
+
+v0.0.20 - Nov 15, 1998	 # 增加 scrollleft 及 scrollright 的巨集
+			 # 修正 copy mark, overlay black 未回載緩衝區的 BUG
+
+v0.0.21 - Nov 17, 1998	 # 修改記憶體配置方式。
+			 # 增加對 [fm]'x' 命令序列的支援
+			 # 修正 search string 不能有空白的 BUG
+
+v0.0.22 - Nov 18, 1998	 # 增加記憶體配置錯誤處理
+			 # 增加唯讀檔的警告與強迫寫入
+			 # 增加當 set blankcompress on 時，行尾空白不寫入
+			 # 增加搜尋 [search] 時，直接按 上/下 鍵選搜尋方向
+
+v0.0.23 - Nov 18, 1998	 # 增加中文訊息的支援，設定 set big5 on，訊問 [?5]
+
+v0.0.24 - Nov 19, 1998	 # 增加 [menu] 的巨集，提供下拉式功能選單
+			   以 F1 鍵叫出，ENTER 鍵選擇，SPACE 鍵放棄
+
+v0.0.25 - Nov 20, 1998	 # 增加 Menu 中 Hotkey 的顯示及功能
+			 # 增加中文 Menu 及中英切換
+
+v0.0.26 - Nov 23, 1998	 # 自動設定 Terminal Type 的範例: 請參看目錄下
+			   pe2 的 Shell Script
+			 # 修正循環 Change 的問題，eg: c/kkk/xkkk/
+			 # 修正 Shift Right 到右邊界當掉的 bug
+			 # 增加 Menu 中的狀態顯示
+			 # 修改部份 Menu 中選項，在選取後，仍保留在 Menu
+
+v0.0.27 - Nov 24, 1998	 # 增加 Command Line History 的功能，以上下鍵選擇
+			   ENTER 鍵確定，SPACE 鍵放棄
+			 # 增加 [history] 巨集以叫出 Command Line History
+			 # 增加 set history-key none/up/down/both 決定叫出
+			   Command Line History 的功能鍵
+
+v0.0.28 - Nov 25, 1998	 # 增加 dir 時，檔案修改日期的顯示
+			 # 增加 dir 時，sorting 的選擇(依檔名、時間、大小)
+			   set dir-sort-by name/time/size
+
+v0.0.29 - Nov 26, 1998	 # 修改 dir 時，對 Symbolic Link 的表示
+			 # 修改 dir 時 Sorting 的次序， . 及 .. 永遠最前面
+			   其次目錄，檔案再其次。
+			 # 增加 [quit all]、[file all] 的巨集
+
+v0.0.30 - Jan  4, 1999	 # 修正對 Symbolic Link 讀檔及讀目錄的問題
+			 # 修正二次以 Block mark 刪除時回復的 bug
+			 # 修改部份 qe.pro 的定義
+
+v0.0.31 - Jan 15, 1999	 # 修正巨集中定義中文文字的錯誤。
+			   如 def f11='一串中文'
+
+v0.0.32 - Feb 10, 1999	 # 修正 block mark 刪除時的問題
+			 # 增加 set big5 auto 時自動讀 LANG 環境變數的功能
+			   如 LANG=zh_TW 或 LANG=zh_TW.Big5 (只要 zh_TW 開頭)
+			   時，自動以中文模式，否則為英文模式
+
+v0.0.33 - Feb 15, 1999	 # 修正 split 後的問題
+
+v0.0.34 - May 17, 1999	 # 修正在 egcs 下不能 compile 的問題
